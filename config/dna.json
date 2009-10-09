@@ -29,7 +29,7 @@
     { "name":   "sqlite3-ruby" },
     { "name":   "system_timer" },
     { "name":   "thin", "version": ">= 1.2.2" },
-    { "name":   "thoughtbot-paperclip", "version": "= 2.3.0" },
+    { "name":   "thoughtbot-paperclip", "version": "= 2.3.0" }
   ],
   
   "ree":[
@@ -41,7 +41,7 @@
     { "name": "RUBY_HEAP_SLOTS_INCREMENT",      "value":"250000" },
     { "name": "RUBY_HEAP_SLOTS_GROWTH_FACTOR",  "value":"1" },
     { "name": "RUBY_GC_MALLOC_LIMIT",           "value":"50000000" },
-    { "name": "RUBY_HEAP_FREE_MIN",             "value":"14500" },
+    { "name": "RUBY_HEAP_FREE_MIN",             "value":"14500" }
   ],
   
   "recipes":["main"]
