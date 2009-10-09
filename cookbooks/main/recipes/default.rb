@@ -25,7 +25,7 @@ template "/etc/env.d/11ruby" do
 end
 
 #-- Get rid of the RUBYOPT env param
-template "/etc/env.d/10rubygems" dos
+template "/etc/env.d/10rubygems" do
   mode 0644
   source "10rubygems.erb"
 end
