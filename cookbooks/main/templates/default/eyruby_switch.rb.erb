@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+ 
+source_dir = nil
+if ARGV[0] == 'ree'
+  source_dir = lambda { |binary| "/opt/<%= File.basename(@node[:ree]['source'], '.tar.gz') %>/bin/#{binary}" }
+elsif ARGV[0] == 'mri'
+  source_dir = lambda { |binary| "/usr/bin/#{binary}18" }
+else
+  raise ArgumentError.new("acceptable args are 'mri' and 'ree'")
+end
+ 
+%w[erb gem irb rdoc ri ruby].each do |binary|
+  cmd = "sudo rm /usr/bin/#{binary}"
+  puts cmd
+  puts `#{cmd}`
+ 
+  cmd = "sudo ln -s #{source_dir.call(binary)} /usr/bin/#{binary}"
+  puts cmd
+  puts `#{cmd}`
+end

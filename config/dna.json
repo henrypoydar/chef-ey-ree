@@ -1,0 +1,48 @@
+{
+  "gems":[
+    { "name":   "amqp" },
+    { "name":   "aws-s3" },
+    { "name":   "authlogic" },
+    { "name":   "binary42-fastcache" },
+    { "name":   "binarylogic-searchlogic" },
+    { "name":   "chriseppstein-compass" },
+    { "name":   "chronic" },
+    { "name":   "cucumber" },
+    { "name":   "cssmin" },
+    { "name":   "eventmachine" },
+    { "name":   "freelancing-god-thinking-sphinx", "version": ">= 1.1.12" },
+    { "name":   "fastercsv" },
+    { "name":   "haml" },
+    { "name":   "jsmin" },
+    { "name":   "json" },
+    { "name":   "mechanize" },
+    { "name":   "mislav-will_paginate" },
+    { "name":   "mysql" },
+    { "name":   "remix-stash", "version": ">= 1.0.2"},
+    { "name":   "right_aws" },
+    { "name":   "rubyredrick-ri_cal" },
+    { "name":   "vpim" },
+    { "name":   "dferranti-twitter4r" },
+    { "name":   "rack" },
+    { "name":   "rake" },
+    { "name":   "sprockets" },
+    { "name":   "sqlite3-ruby" },
+    { "name":   "system_timer" },
+    { "name":   "thin", "version": ">= 1.2.2" },
+    { "name":   "thoughtbot-paperclip", "version": "= 2.3.0" },
+  ],
+  
+  "ree":[
+    { "source": "http://rubyforge.org/frs/download.php/64475/ruby-enterprise-1.8.7-20090928.tar.gz"}
+  ],
+  
+  "gc_params":[
+    { "name": "RUBY_HEAP_MIN_SLOTS",            "value":"1450000" },
+    { "name": "RUBY_HEAP_SLOTS_INCREMENT",      "value":"250000" },
+    { "name": "RUBY_HEAP_SLOTS_GROWTH_FACTOR",  "value":"1" },
+    { "name": "RUBY_GC_MALLOC_LIMIT",           "value":"50000000" },
+    { "name": "RUBY_HEAP_FREE_MIN",             "value":"14500" },
+  ],
+  
+  "recipes":["main"]
+}
