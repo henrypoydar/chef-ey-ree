@@ -2,7 +2,7 @@
  
 source_dir = nil
 if ARGV[0] == 'ree'
-  source_dir = lambda { |binary| "/opt/<%= File.basename(@node[:ree]['source'], '.tar.gz') %>/bin/#{binary}" }
+  source_dir = lambda { |binary| "/opt/<%= File.basename(@node[:ree_source], '.tar.gz') %>/bin/#{binary}" }
 elsif ARGV[0] == 'mri'
   source_dir = lambda { |binary| "/usr/bin/#{binary}18" }
 else

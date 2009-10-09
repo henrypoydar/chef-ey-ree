@@ -3,9 +3,9 @@ script "ree_installation" do
   interpreter "bash"
   cwd "~"
   code <<-EOH
-    wget #{node[:ree][:source]}
-    tar zxf #{File.basename(node[:ree][:source])}
-    ./#{File.basename(node[:ree][:source], '.tar.gz')}/installer --auto=/opt/#{File.basename(node[:ree][:source], '.tar.gz')}
+    wget #{node[:ree_source]}
+    tar zxf #{File.basename(node[:ree_source])}
+    ./#{File.basename(node[:ree_source], '.tar.gz')}/installer --auto=/opt/#{File.basename(node[:ree_source], '.tar.gz')}
   EOH
 end
 
@@ -14,7 +14,7 @@ node[:gems].each do |gem|
   interpreter "bash"
   cwd "~"
   code <<-EOH
-    /opt/#{File.basename(node[:ree][:source], '.tar.gz')}/bin/ruby /opt/#{File.basename(node[:ree][:source], '.tar.gz')}/bin/gem install --no-rdoc --no-ri #{gem}
+    /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/ruby /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/gem install --no-rdoc --no-ri #{gem}
   EOH
 end
 
