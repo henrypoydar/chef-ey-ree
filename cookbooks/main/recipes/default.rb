@@ -1,21 +1,24 @@
 # -- Install REE in /opt
-script "ree_installation" do
+script "REE installation" do
   interpreter "bash"
-  cwd "~"
   code <<-EOH
+    cd ~
+    mkdir src
+    cd src
     wget #{node[:ree_source]}
     tar zxf #{File.basename(node[:ree_source])}
-    ./#{File.basename(node[:ree_source], '.tar.gz')}/installer --auto=/opt/#{File.basename(node[:ree_source], '.tar.gz')}
+    sudo ./#{File.basename(node[:ree_source], '.tar.gz')}/installer --auto=/opt/#{File.basename(node[:ree_source], '.tar.gz')}
   EOH
 end
 
 #-- Install gems with REE
 node[:gems].each do |gem|
-  interpreter "bash"
-  cwd "~"
-  code <<-EOH
-    /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/ruby /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/gem install --no-rdoc --no-ri #{gem}
-  EOH
+  script "REE gem install of #{gem[:name]}" do
+    interpreter "bash"
+    code <<-EOH
+      sudo /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/ruby /opt/#{File.basename(node[:ree_source], '.tar.gz')}/bin/gem install --no-rdoc --no-ri #{gem[:name]} --version '#{gem[:version] || '>0.0.0'}'
+    EOH
+  end
 end
 
 #-- Update env to include REE GC params
@@ -32,10 +35,9 @@ end
 
 #-- Update env vars
 script "ree_env_update" do
-  cwd "~"
   interpreter "bash"
   code <<-EOH
-    /usr/sbin/env-update
+    sudo /usr/sbin/env-update
   EOH
 end
 
@@ -46,9 +48,7 @@ template "/usr/bin/thin" do
 end
 
 #-- Create the switcher script
-template "~/eyruby_switch.rb" do
+template "/home/#{node[:user] || File.basename(Dir.glob("/home/*").first)}/eyruby_switch.rb" do
   mode 0755
   source "eyruby_switch.rb.erb"
 end
-
-

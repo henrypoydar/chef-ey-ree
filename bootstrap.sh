@@ -11,7 +11,7 @@ echo
 
 sudo gem sources -a http://gems.opscode.com
 sudo gem install chef ohai --no-rdoc --no-ri
-sudo chef-solo -l debug -c config/solo.rb -j config/dna.json
+sudo chef-solo -l info -c config/solo.rb -j config/dna.json
 
 echo
 echo "COMPLETE"

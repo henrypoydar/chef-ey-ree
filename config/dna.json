@@ -10,7 +10,7 @@
     { "name":   "cucumber" },
     { "name":   "cssmin" },
     { "name":   "eventmachine" },
-    { "name":   "freelancing-god-thinking-sphinx", "version": ">= 1.1.12" },
+    { "name":   "freelancing-god-thinking-sphinx", "version": ">=1.1.12" },
     { "name":   "fastercsv" },
     { "name":   "haml" },
     { "name":   "jsmin" },
@@ -29,7 +29,7 @@
     { "name":   "sqlite3-ruby" },
     { "name":   "system_timer" },
     { "name":   "thin", "version": ">= 1.2.2" },
-    { "name":   "thoughtbot-paperclip", "version": "= 2.3.0" }
+    { "name":   "thoughtbot-paperclip", "version": "=2.3.0" }
   ],
   
   "ree_source":"http://rubyforge.org/frs/download.php/64475/ruby-enterprise-1.8.7-20090928.tar.gz",
