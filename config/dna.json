@@ -35,11 +35,14 @@
   "ree_source":"http://rubyforge.org/frs/download.php/64475/ruby-enterprise-1.8.7-20090928.tar.gz",
   
   "gc_params":[
-    { "name": "RUBY_HEAP_MIN_SLOTS",            "value":"500000" },
+    { "name": "RUBY_HEAP_MIN_SLOTS",            "value":"600000" },
     { "name": "RUBY_HEAP_SLOTS_INCREMENT",      "value":"250000" },
     { "name": "RUBY_HEAP_SLOTS_GROWTH_FACTOR",  "value":"1" },
-    { "name": "RUBY_GC_MALLOC_LIMIT",           "value":"50000000" }
+    { "name": "RUBY_GC_MALLOC_LIMIT",           "value":"36000000" },
+    { "name": "RUBY_HEAP_FREE_MIN",             "value":"100000" }
   ],
+  
+  "gc_config_location":"/data/crm/shared/config/gc_params.yml",
   
   "recipes":["main"]
 }

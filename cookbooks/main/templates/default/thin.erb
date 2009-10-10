@@ -1,12 +1,18 @@
 #!/usr/bin/ruby
 
 require 'rubygems'
+require 'yaml'
 
 version = ">= 0"
 
 if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
   version = $1
   ARGV.shift
+end
+
+config = YAML.load_file("<%= @node[:gc_config_location] %>")
+config.each do |k,v|
+  ENV["#{k}"] = "#{v}"
 end
 
 gem 'thin', version

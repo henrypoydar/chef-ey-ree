@@ -21,10 +21,10 @@ node[:gems].each do |gem|
   end
 end
 
-#-- Update env to include REE GC params
-template "/etc/env.d/11ruby" do
+#-- Create YAML file for GC params
+template "#{node[:gc_config_location]}" do
   mode 0644
-  source "11ruby.erb"
+  source "gc_params.yml.erb"
 end
 
 #-- Get rid of the RUBYOPT env param
@@ -41,21 +41,11 @@ script "Ensure RUBYOPTS is not picked up" do
   EOH
 end
 
-#-- Update env vars
-script "ree_env_update" do
-  interpreter "bash"
-  code <<-EOH
-    sudo /usr/sbin/env-update
-  EOH
-end
-
-#-- Update thins to use the generic ruby
+#-- Update thins to use the generic ruby and load GC params
 template "/usr/bin/thin" do
   mode 0755
   source "thin.erb"
 end
-
-
 
 #-- Create the switcher script
 template "/home/#{node[:user] || File.basename(Dir.glob("/home/*").first)}/eyruby_switch.rb" do
