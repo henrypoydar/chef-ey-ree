@@ -10,6 +10,8 @@ WARNING: This recipe is customized for my needs.  In particular, specific gems a
 
 ## Usage
 
+Edit dna.json.
+
 From your EY slice:
 
     cd ~ && git clone <your forked version of this recipe> && cd chef-ey-ree
@@ -25,10 +27,8 @@ And back:
     
 ## GC Tuning
     
-Edit (as sudoer) `/etc/env.d/11ruby`
-Then apply the new environment variables:
-
-    sudo /usr/sbin/env-update
+Edit `/path/to/your/gc_params.yml`
+Then bounce your thins.
 
 ## TODO
 
