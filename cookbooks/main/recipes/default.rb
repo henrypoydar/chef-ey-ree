@@ -33,6 +33,14 @@ template "/etc/env.d/10rubygems" do
   source "10rubygems.erb"
 end
 
+#-- Clean up chef artifacts with 10rubygems 
+script "Ensure RUBYOPTS is not picked up" do
+  interpreter "bash"
+  code <<-EOH
+    sudo rm -f /etc/env.d/10rubygems.chef*
+  EOH
+end
+
 #-- Update env vars
 script "ree_env_update" do
   interpreter "bash"
@@ -47,8 +55,11 @@ template "/usr/bin/thin" do
   source "thin.erb"
 end
 
+
+
 #-- Create the switcher script
 template "/home/#{node[:user] || File.basename(Dir.glob("/home/*").first)}/eyruby_switch.rb" do
   mode 0755
   source "eyruby_switch.rb.erb"
 end
+
